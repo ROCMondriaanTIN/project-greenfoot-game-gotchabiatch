@@ -85,6 +85,7 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
+        water();
         {
         checkKeys();
         onGround();
@@ -141,13 +142,13 @@ public class Hero extends Mover {
         return tile != null && tile.isSolid == true; 
     }
     
-        
-    
-    
-    
-    
-    
-
+    public void water()
+    {
+     if (isTouching(LiquidWaterTop.class))
+     {
+         setLocation(142,5473);
+        }
+    }
     
     public void handleInput() {
         if ((Greenfoot.isKeyDown("w") && onGround() == true ) ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class))) {
