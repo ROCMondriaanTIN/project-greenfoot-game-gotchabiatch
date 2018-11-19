@@ -42,6 +42,7 @@ public class Hero extends Mover {
     private boolean lopen;
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
+    public boolean key;
     public Hero() {
         super();
         gravity = 9.8;
@@ -289,6 +290,15 @@ public class Hero extends Mover {
             setImage (RMidle);
         else
             setImage (LMidle);
+        }
+        
+        public boolean eatKeys()
+        {
+            Actor Keys = getOneIntersectingObject(Keys.class);
+            if(isTouching(Keys.class))
+            removeTouching(Keys.class);
+            key=true;
+            return key;
         }
     }
     
