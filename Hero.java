@@ -42,6 +42,7 @@ public class Hero extends Mover {
     private boolean lopen;
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
+    
     public Hero() {
         super();
         gravity = 9.8;
@@ -104,6 +105,9 @@ public class Hero extends Mover {
                 break;
             }
         }
+        
+        
+        
         
  
     }

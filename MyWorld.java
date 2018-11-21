@@ -145,6 +145,8 @@ public class MyWorld extends World {
         ce = new CollisionEngine(te, camera);
         // Toevoegen van de mover instantie of een extentie hiervan
         ce.addCollidingMover(hero);
+        // display de possistion
+        
     }
         
     @Override
