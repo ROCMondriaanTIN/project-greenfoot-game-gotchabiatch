@@ -42,9 +42,11 @@ public class Hero extends Mover {
     private boolean lopen;
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
-    public boolean key;
+    private boolean key = false;
+    public boolean door = false;
     public Hero() {
         super();
+        
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
@@ -88,7 +90,7 @@ public class Hero extends Mover {
         handleInput();
         water();
         {
-        checkKeys();
+        //checkKeys();
         onGround();
         }
         
@@ -98,6 +100,8 @@ public class Hero extends Mover {
             velocityY = gravity;
         }
         applyVelocity();
+        eatKeys();
+        detectPortal();
 
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
@@ -150,6 +154,8 @@ public class Hero extends Mover {
          setLocation(142,5473);
         }
     }
+    
+    
     
     public void handleInput() {
         if ((Greenfoot.isKeyDown("w") && onGround() == true ) ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class))) {
@@ -292,6 +298,7 @@ public class Hero extends Mover {
             setImage (LMidle);
         }
         
+        
         public boolean eatKeys()
         {
             Actor Keys = getOneIntersectingObject(Keys.class);
@@ -300,5 +307,22 @@ public class Hero extends Mover {
             key=true;
             return key;
         }
+     public void detectPortal()
+     {
+         
+         if (key==true)
+         {
+             if(isTouching(Door.class))
+             setLocation(500,500);
+         }
+        
+        
     }
+    
+    
+    
+}
+        
+    
+    
     
