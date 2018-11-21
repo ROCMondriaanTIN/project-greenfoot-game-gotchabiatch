@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
  * Write a description of class Door here.
@@ -14,16 +15,25 @@ public class Door extends Tile
      */
     public Door(String image, int width, int heigth) {
         super(image, width, heigth);
+        
+        
+      
+         
+    
+    
+    
+}
+
+public void act ()
+{
+    List <Hero> hero = getWorld().getObjects(Hero.class);
      
-            Actor Keys = getOneIntersectingObject(Keys.class);
-            if(isTouching(Keys.class))
-            {
-                setImage("door_openMid");
-            }
         
+      if (hero.get(0).key)
+        {
+            setImage("door_openMid.png");
+            
+        }
         
-    }    
-    
-    
-    
+    }
 }

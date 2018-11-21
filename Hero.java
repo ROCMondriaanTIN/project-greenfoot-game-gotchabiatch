@@ -1,6 +1,6 @@
 
 import greenfoot.*;
-
+import java.*;
 /**
  *
  * @author R. Springer
@@ -42,8 +42,10 @@ public class Hero extends Mover {
     private boolean lopen;
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
-    private boolean key = false;
+    public  boolean key = false;
     public boolean door = false;
+    public  boolean openDeur1 = false;
+    public  boolean touchDeur1 = false;
     public Hero() {
         super();
         
@@ -101,7 +103,12 @@ public class Hero extends Mover {
         }
         applyVelocity();
         eatKeys();
-        detectPortal();
+        //detectPortal();
+       
+        //openDeur1();
+        Enemy();
+        
+        
 
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
@@ -303,8 +310,10 @@ public class Hero extends Mover {
         {
             Actor Keys = getOneIntersectingObject(Keys.class);
             if(isTouching(Keys.class))
+            {
             removeTouching(Keys.class);
             key=true;
+        }
             return key;
         }
      public void detectPortal()
@@ -313,16 +322,38 @@ public class Hero extends Mover {
          if (key==true)
          {
              if(isTouching(Door.class))
+             {
              setLocation(500,500);
+            }
          }
         
         
     }
     
-    
-    
-}
+    public boolean openDeur1()
+    {
+        if (key==true && isTouching(Door.class))
+        {
+            openDeur1 = true;
+            setLocation(142, 5473);
+        }
+        return openDeur1;
         
     
     
+    
+    
+}
+     public boolean getOpenDeur()
+     {
+         return openDeur1;
+        }
+    public void Enemy()
+    {
+     if (isTouching(Fly.class))
+     {
+         setLocation(142,5473);
+     }
+    }
+    }
     
