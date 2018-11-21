@@ -1,6 +1,6 @@
 
 import greenfoot.*;
-
+import java.*;
 /**
  *
  * @author R. Springer
@@ -42,9 +42,17 @@ public class Hero extends Mover {
     private boolean lopen;
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
+
     
+
+    public  boolean key = false;
+    public boolean door = false;
+    public  boolean openDeur1 = false;
+    public  boolean touchDeur1 = false;
+
     public Hero() {
         super();
+        
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
@@ -86,6 +94,7 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
+        water();
         {
         checkKeys();
         onGround();
@@ -97,6 +106,13 @@ public class Hero extends Mover {
             velocityY = gravity;
         }
         applyVelocity();
+        eatKeys();
+        //detectPortal();
+       
+        openDeur1();
+        Enemy();
+        
+        
 
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
@@ -145,13 +161,15 @@ public class Hero extends Mover {
         return tile != null && tile.isSolid == true; 
     }
     
-        
+    public void water()
+    {
+     if (isTouching(LiquidWaterTop.class))
+     {
+         respawn();
+        }
+    }
     
     
-    
-    
-    
-
     
     public void handleInput() {
         if ((Greenfoot.isKeyDown("w") && onGround() == true ) ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class))) {
@@ -293,5 +311,66 @@ public class Hero extends Mover {
         else
             setImage (LMidle);
         }
+        
+        
+        public boolean eatKeys()
+        {
+            Actor Keys = getOneIntersectingObject(Keys.class);
+            if(isTouching(Keys.class))
+            {
+            removeTouching(Keys.class);
+            key=true;
+        }
+            return key;
+        }
+     public void detectPortal()
+     {
+         
+         if (key==true)
+         {
+             if(isTouching(Door.class))
+             {
+             setLocation(500,500);
+            }
+         }
+        
+        
+    }
+    
+    public boolean openDeur1()
+    {
+        if (key==true && isTouching(Door.class))
+        {
+            openDeur1 = true;
+            setLocation(142, 5473);
+        }
+        return openDeur1;
+        
+    
+    
+    
+    
+}
+     public boolean getOpenDeur()
+     {
+         return openDeur1;
+        }
+    public void Enemy()
+    {
+     if (isTouching(Fly.class))
+     {
+         respawn();
+     }
+     if ( isTouching(Blocker.class))
+     {
+         respawn();
+         
+        }
+    }
+    
+    public void respawn()
+    {
+        setLocation(142,5473);
+    }
     }
     
