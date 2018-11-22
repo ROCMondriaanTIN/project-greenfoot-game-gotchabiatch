@@ -5,37 +5,37 @@ import java.*;
  *
  * @author R. Springer
  */
-public class Hero extends Mover {
+public class Hero2 extends Mover {
     private final double gravity;
     private final double acc;
     private final double drag;
-    private final GreenfootImage RMidle= new GreenfootImage("p123.png");
-    private final GreenfootImage RMjump= new GreenfootImage("p1_jump.png");
-    private final GreenfootImage RMwalk1= new GreenfootImage("p1_walk01.png");
-    private final GreenfootImage RMwalk2= new GreenfootImage("p1_walk02.png");
-    private final GreenfootImage RMwalk3= new GreenfootImage("p1_walk03.png");
-    private final GreenfootImage RMwalk4= new GreenfootImage("p1_walk04.png");
-    private final GreenfootImage RMwalk5= new GreenfootImage("p1_walk05.png");
-    private final GreenfootImage RMwalk6= new GreenfootImage("p1_walk06.png");
-    private final GreenfootImage RMwalk7= new GreenfootImage("p1_walk07.png");
-    private final GreenfootImage RMwalk8= new GreenfootImage("p1_walk08.png");
-    private final GreenfootImage RMwalk9= new GreenfootImage("p1_walk09.png");
-    private final GreenfootImage RMwalk10= new GreenfootImage("p1_walk10.png");
-    private final GreenfootImage RMwalk11= new GreenfootImage("p1_walk11.png");
+    private final GreenfootImage RMidle= new GreenfootImage("p2_stand.png");
+    private final GreenfootImage RMjump= new GreenfootImage("p2_jump.png");
+    private final GreenfootImage RMwalk1= new GreenfootImage("p2_walk01.png");
+    private final GreenfootImage RMwalk2= new GreenfootImage("p2_walk02.png");
+    private final GreenfootImage RMwalk3= new GreenfootImage("p2_walk03.png");
+    private final GreenfootImage RMwalk4= new GreenfootImage("p2_walk04.png");
+    private final GreenfootImage RMwalk5= new GreenfootImage("p2_walk05.png");
+    private final GreenfootImage RMwalk6= new GreenfootImage("p2_walk06.png");
+    private final GreenfootImage RMwalk7= new GreenfootImage("p2_walk07.png");
+    private final GreenfootImage RMwalk8= new GreenfootImage("p2_walk08.png");
+    private final GreenfootImage RMwalk9= new GreenfootImage("p2_walk09.png");
+    private final GreenfootImage RMwalk10= new GreenfootImage("p2_walk10.png");
+    private final GreenfootImage RMwalk11= new GreenfootImage("p2_walk11.png");
  
-    private final GreenfootImage LMidle = new GreenfootImage("p123inv.png");
+    private final GreenfootImage LMidle = new GreenfootImage("p2_inv.png");
     private final GreenfootImage LMjump = new GreenfootImage(RMjump);
-    private final GreenfootImage LMwalk1 = new GreenfootImage("p1inv_walk01.png");
-    private final GreenfootImage LMwalk2 = new GreenfootImage("p1inv_walk02.png");
-    private final GreenfootImage LMwalk3 = new GreenfootImage("p1inv_walk03.png");
-    private final GreenfootImage LMwalk4 = new GreenfootImage("p1inv_walk04.png");
-    private final GreenfootImage LMwalk5 = new GreenfootImage("p1inv_walk05.png");
-    private final GreenfootImage LMwalk6 = new GreenfootImage("p1inv_walk06.png");
-    private final GreenfootImage LMwalk7 = new GreenfootImage("p1inv_walk07.png");
-    private final GreenfootImage LMwalk8 = new GreenfootImage("p1inv_walk08.png");
-    private final GreenfootImage LMwalk9 = new GreenfootImage("p1inv_walk09.png");
-    private final GreenfootImage LMwalk10 = new GreenfootImage("p1inv_walk10.png");
-    private final GreenfootImage LMwalk11 = new GreenfootImage("p1inv_walk11.png");
+    private final GreenfootImage LMwalk1 = new GreenfootImage("p2_walk01inv.png");
+    private final GreenfootImage LMwalk2 = new GreenfootImage("p2_walk02inv.png");
+    private final GreenfootImage LMwalk3 = new GreenfootImage("p2_walk03inv.png");
+    private final GreenfootImage LMwalk4 = new GreenfootImage("p2_walk04inv.png");
+    private final GreenfootImage LMwalk5 = new GreenfootImage("p2_walk05inv.png");
+    private final GreenfootImage LMwalk6 = new GreenfootImage("p2_walk06inv.png");
+    private final GreenfootImage LMwalk7 = new GreenfootImage("p2_walk07inv.png");
+    private final GreenfootImage LMwalk8 = new GreenfootImage("p2_walk08inv.png");
+    private final GreenfootImage LMwalk9 = new GreenfootImage("p2_walk09inv.png");
+    private final GreenfootImage LMwalk10 = new GreenfootImage("p2_walk10inv.png");
+    private final GreenfootImage LMwalk11 = new GreenfootImage("p2_walk11inv.png");
  
     private int speed = 3;
     private int frame;
@@ -50,7 +50,7 @@ public class Hero extends Mover {
     public  boolean openDeur1 = false;
     public  boolean touchDeur1 = false;
 
-    public Hero() {
+    public Hero2() {
         super();
         
         gravity = 9.8;
@@ -397,7 +397,5 @@ public class Hero extends Mover {
     {
         setLocation(142,5473);
     }
-    
-    
     }
     

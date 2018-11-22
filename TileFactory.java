@@ -19,7 +19,7 @@ public class TileFactory {
                 tile.isSolid = true;
                 break;
             case 1:
-                tile = new Tile("BlockerMad.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new Blocker("blockerMad.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
                 break;
             case 2:
@@ -202,7 +202,7 @@ public class TileFactory {
                 tile = new Tile("grassCliffRight.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
                 break;
-            case 169:
+             case 169:
                 tile = new Keys("keyBlue.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = false;
                 break;
@@ -225,6 +225,14 @@ public class TileFactory {
                  tile = new Tile("ropeVertical.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                  tile.isSolid = false;
                 break;
+                case 282: 
+                tile = new Ster("star.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = false;
+                break;
+                case 105: 
+                tile = new Gem("gemBlue.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = false;
+                break;
             case 250: 
                 tile = new Tile("signRight.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = false;
@@ -235,6 +243,7 @@ public class TileFactory {
             case 103 :
                  tile = new Fly("flyFly1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
+             
             
                            
             default:
