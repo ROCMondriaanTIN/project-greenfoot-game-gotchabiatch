@@ -152,5 +152,13 @@ public class MyWorld extends World {
     @Override
     public void act() {
         ce.update();
+        
+        prepare();
     }
+    public void prepare()
+    {
+        PlayAgain1 playAgain1 = new PlayAgain1();
+        addObject (playAgain1, 40, 40);
+    }
+        
 }

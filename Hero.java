@@ -123,12 +123,26 @@ public class Hero extends Mover {
                 break;
             }
         }
-        
+        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
+            if (enemy != null) {
+                getWorld().removeObject(enemy);
+                Greenfoot.setWorld(new GameOver());
+                break;
+            }
+        }
+        for (Actor enemy : getIntersectingObjects(Death.class)) {
+            if (enemy != null) {
+                getWorld().removeObject(this);
+                Greenfoot.setWorld(new GameOver());
+                break;
+            }
+        }
+    }
         
         
         
  
-    }
+    
             public void checkKeys()
     {
         isKeyPressed = false;
