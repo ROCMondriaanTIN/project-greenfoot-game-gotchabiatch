@@ -1,4 +1,3 @@
-
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -8,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World {
 
     private CollisionEngine ce;
-    
+
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -140,6 +139,10 @@ public class MyWorld extends World {
         addObject(hero, 142,5473);
         addObject(new Enemy(), 1170, 410);
         
+        // Force act zodat de camera op de juist plek staat.
+        camera.act();
+        hero.act();
+
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
         // De collision engine kijkt alleen naar de tiles die de variabele solid op true hebben staan.
         ce = new CollisionEngine(te, camera);
@@ -148,7 +151,7 @@ public class MyWorld extends World {
         // display de possistion
         
     }
-        
+
     @Override
     public void act() {
         ce.update();

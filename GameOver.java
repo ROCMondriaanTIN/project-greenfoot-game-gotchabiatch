@@ -23,8 +23,8 @@ public class GameOver extends World
     private void prepare()
     {
         PlayAgain playAgain = new PlayAgain();
-        addObject (playAgain, 500, 500);
+        addObject (playAgain, 500, 600);
         GameOver1 gameOver1= new GameOver1();
-        addObject (gameOver1, 500, 300);
+        addObject (gameOver1, 500, 200);
     }
 }
