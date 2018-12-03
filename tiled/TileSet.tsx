@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.1" name="TileSet" tilewidth="129" tileheight="146" tilecount="311" columns="0">
+<tileset version="1.2" tiledversion="1.2.1" name="TileSet" tilewidth="129" tileheight="146" tilecount="322" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="51" height="51" source="../images/blockerBody.png"/>
@@ -933,5 +933,38 @@
  </tile>
  <tile id="310">
   <image width="70" height="70" source="../images/window.png"/>
+ </tile>
+ <tile id="311">
+  <image width="70" height="70" source="../images/door_closedMid2 2.png"/>
+ </tile>
+ <tile id="312">
+  <image width="70" height="70" source="../images/door_closedMid3.png"/>
+ </tile>
+ <tile id="313">
+  <image width="70" height="70" source="../images/door_closedMid4.png"/>
+ </tile>
+ <tile id="314">
+  <image width="70" height="70" source="../images/door_closedMid5.png"/>
+ </tile>
+ <tile id="315">
+  <image width="70" height="70" source="../images/door_closedMid6.png"/>
+ </tile>
+ <tile id="316">
+  <image width="70" height="70" source="../images/door_closedMid7.png"/>
+ </tile>
+ <tile id="317">
+  <image width="70" height="70" source="../images/door_closedMid8.png"/>
+ </tile>
+ <tile id="318">
+  <image width="70" height="70" source="../images/door_closedMid9.png"/>
+ </tile>
+ <tile id="319">
+  <image width="70" height="70" source="../images/door_closedMid10.png"/>
+ </tile>
+ <tile id="320">
+  <image width="70" height="70" source="../images/door_closedMid12.png"/>
+ </tile>
+ <tile id="321">
+  <image width="70" height="70" source="../images/door_closedMid13.png"/>
  </tile>
 </tileset>

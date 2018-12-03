@@ -99,7 +99,7 @@ public class Hero extends Mover {
         checkKeys();
         onGround();
         }
-        
+        getWorld().showText(getX() + "," + getY(),500,50);
         velocityX *= drag;
         velocityY += acc;
         if (velocityY > gravity) {
