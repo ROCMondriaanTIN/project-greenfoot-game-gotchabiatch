@@ -239,11 +239,19 @@ public class TileFactory {
                 break;
             case 129:
                  tile = new Tile("grassMid_notSolid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
-                break;
+                tile.isSolid = false;
+                 break;
             case 103 :
                  tile = new Fly("flyFly1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
-             
+             case 127 :
+                 tile = new Tile("grassLeft_notSolid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                 tile.isSolid = false;
+                break;
+                case 279 :
+                 tile = new Death("spikes.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                 tile.isSolid = true;
+                break;
             
                            
             default:
