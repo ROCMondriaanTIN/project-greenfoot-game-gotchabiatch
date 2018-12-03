@@ -1,7 +1,7 @@
 
 /**
  *
- * @author R. Springer
+ * @author C. Zuijderwijk
  */
 public class TileFactory {
 
@@ -242,7 +242,7 @@ public class TileFactory {
                 tile.isSolid = false;
                  break;
             case 103 :
-                 tile = new Fly("flyFly1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                 tile = new Death("flyFly1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
              case 127 :
                  tile = new Tile("grassLeft_notSolid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
