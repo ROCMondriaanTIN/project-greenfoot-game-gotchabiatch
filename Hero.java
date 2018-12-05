@@ -42,7 +42,16 @@ public class Hero extends Mover {
     private boolean lopen;
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
-
+    
+    public int sterren = 0;
+    public int gems = 0;
+   
+    public boolean isTouchingMovingPlatform = false;
+    
+    int waardeCoin = 1;
+    int Charactercoin1 = 0;
+    int Charactercoin2 = 0;
+    
     
 
     public  boolean key = false;
@@ -90,6 +99,10 @@ public class Hero extends Mover {
         LMwalk10.scale(70,100);
         LMwalk11.scale(70,100);
     }
+    
+    
+
+    
 
     @Override
     public void act() {
@@ -114,6 +127,18 @@ public class Hero extends Mover {
         openDeur1();
         Enemy();
         
+        
+        isTouchingMovingPlatform = false;
+        for (Platform platform : getIntersectingObjects(Platform.class)) {
+            if (platform != null) {
+                isTouchingMovingPlatform = true;
+            }
+        }
+        if(isTouchingMovingPlatform == false) {
+            velocityX *= drag;
+            velocityY += acc;
+        }
+
         
 
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
@@ -340,26 +365,26 @@ public class Hero extends Mover {
             return key;
         }
         
-        public boolean eatGems()
+        public  int eatGems()
         {
             Actor Gem = getOneIntersectingObject(Gem.class);
             if(isTouching(Gem.class))
             {
             removeTouching(Gem.class);
-            key=true;
+            gems = gems + 1;
         }
-            return key;
+            return gems;
         }
         
-        public boolean eatSter()
+        public int eatSter()
         {
             Actor Ster = getOneIntersectingObject(Ster.class);
             if(isTouching(Ster.class))
             {
             removeTouching(Ster.class);
-            key=true;
+            sterren = sterren + 1;
         }
-            return key;
+            return sterren;
         }
         
      public void detectPortal()
