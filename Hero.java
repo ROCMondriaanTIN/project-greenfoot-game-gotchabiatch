@@ -188,7 +188,7 @@ public class Hero extends Mover {
     
     
     public void handleInput() {
-        if ((Greenfoot.isKeyDown("w") && onGround() == true ) ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class))) {
+        if ((Greenfoot.isKeyDown("w") && onGround() == true ) ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeHorizontal.class))) {
             velocityY = -15;
         }
         if (Greenfoot.isKeyDown("a")) {

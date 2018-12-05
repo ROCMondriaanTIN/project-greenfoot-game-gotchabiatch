@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.1" name="TileSet" tilewidth="129" tileheight="146" tilecount="322" columns="0">
+<tileset version="1.2" tiledversion="1.2.1" name="TileSet" tilewidth="129" tileheight="146" tilecount="327" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="51" height="51" source="../images/blockerBody.png"/>
@@ -966,5 +966,20 @@
  </tile>
  <tile id="321">
   <image width="70" height="70" source="../images/door_closedMid13.png"/>
+ </tile>
+ <tile id="322">
+  <image width="70" height="70" source="../images/keyBlue2.png"/>
+ </tile>
+ <tile id="323">
+  <image width="70" height="70" source="../images/keyBlue3.png"/>
+ </tile>
+ <tile id="324">
+  <image width="70" height="70" source="../images/keyBlue4.png"/>
+ </tile>
+ <tile id="325">
+  <image width="70" height="70" source="../images/keyBlue5.png"/>
+ </tile>
+ <tile id="326">
+  <image width="70" height="70" source="../images/keyBlue6.png"/>
  </tile>
 </tileset>
