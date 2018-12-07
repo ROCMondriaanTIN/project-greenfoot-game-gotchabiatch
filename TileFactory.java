@@ -335,7 +335,7 @@ public class TileFactory {
                 tile.isSolid = true;
                 break;
             case 84: 
-                tile = new Tile("fence.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new Fence("fence.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
                 break;
             case 85: 
@@ -486,7 +486,7 @@ public class TileFactory {
                 tile.isSolid = false;
                 break;
             case 176: 
-                tile = new Death(";iquidLavaTop.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new Death("liquidLavaTop.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
                 break;
             case 177: 

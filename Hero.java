@@ -25,17 +25,17 @@ public class Hero extends Mover {
  
     private final GreenfootImage LMidle = new GreenfootImage("p123inv.png");
     private final GreenfootImage LMjump = new GreenfootImage(RMjump);
-    private final GreenfootImage LMwalk1 = new GreenfootImage("p1inv_walk01.png");
-    private final GreenfootImage LMwalk2 = new GreenfootImage("p1inv_walk02.png");
-    private final GreenfootImage LMwalk3 = new GreenfootImage("p1inv_walk03.png");
-    private final GreenfootImage LMwalk4 = new GreenfootImage("p1inv_walk04.png");
-    private final GreenfootImage LMwalk5 = new GreenfootImage("p1inv_walk05.png");
-    private final GreenfootImage LMwalk6 = new GreenfootImage("p1inv_walk06.png");
-    private final GreenfootImage LMwalk7 = new GreenfootImage("p1inv_walk07.png");
-    private final GreenfootImage LMwalk8 = new GreenfootImage("p1inv_walk08.png");
-    private final GreenfootImage LMwalk9 = new GreenfootImage("p1inv_walk09.png");
-    private final GreenfootImage LMwalk10 = new GreenfootImage("p1inv_walk10.png");
-    private final GreenfootImage LMwalk11 = new GreenfootImage("p1inv_walk11.png");
+    private final GreenfootImage LMwalk1 = new GreenfootImage("p1_walk01inv.png");
+    private final GreenfootImage LMwalk2 = new GreenfootImage("p1_walk02inv.png");
+    private final GreenfootImage LMwalk3 = new GreenfootImage("p1_walk03inv.png");
+    private final GreenfootImage LMwalk4 = new GreenfootImage("p1_walk04inv.png");
+    private final GreenfootImage LMwalk5 = new GreenfootImage("p1_walk05inv.png");
+    private final GreenfootImage LMwalk6 = new GreenfootImage("p1_walk06inv.png");
+    private final GreenfootImage LMwalk7 = new GreenfootImage("p1_walk07inv.png");
+    private final GreenfootImage LMwalk8 = new GreenfootImage("p1_walk08inv.png");
+    private final GreenfootImage LMwalk9 = new GreenfootImage("p1_walk09inv.png");
+    private final GreenfootImage LMwalk10 = new GreenfootImage("p1_walk10inv.png");
+    private final GreenfootImage LMwalk11 = new GreenfootImage("p1_walk11inv.png");
  
     private int speed = 3;
     private int frame;
@@ -140,6 +140,8 @@ public class Hero extends Mover {
         
         Enemy();
         
+        removeItems();
+        
         
         isTouchingMovingPlatform = false;
         for (Platform platform : getIntersectingObjects(Platform.class)) {
@@ -176,6 +178,18 @@ public class Hero extends Mover {
             }
         }
     }
+    
+    public void removeItems()
+    {
+    if (isTouching(HeroCoin1.class)) {
+        waardeCoin = 2;
+        removeTouching(HeroCoin1.class); 
+    }
+    if (isTouching(HeroCoin2.class)) {
+        waardeCoin = 3;
+        removeTouching(HeroCoin2.class); 
+    }
+}
         
         
         
@@ -191,13 +205,13 @@ public class Hero extends Mover {
         }
         else if (Greenfoot.isKeyDown("d"))
         {
-            walkRight();
+            animateRight();
             setLocation (getX()+speed, getY());
             isKeyPressed = true;
         }
         else if (Greenfoot.isKeyDown("a"))
         {
-            walkLeft();
+            animateLeft();
             setLocation (getX()-speed, getY());
             isKeyPressed = true;
         }
@@ -226,7 +240,10 @@ public class Hero extends Mover {
     
     
     public void handleInput() {
-        if ((Greenfoot.isKeyDown("w") && onGround() == false ) || (Greenfoot.isKeyDown("w") && onGround() == true) ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeHorizontal.class))) {
+        if ((Greenfoot.isKeyDown("w") && onGround() == false ) || (Greenfoot.isKeyDown("w") && isTouching(Fence.class)) || (Greenfoot.isKeyDown("w") && onGround() == true) 
+        ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) ||
+        (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeHorizontal.class))) {
+            //Greenfoot.playSound("Jump_-_Sound_Effect-6Q9t8ucAc2M.wav");
             velocityY = -18;
         }
         if (Greenfoot.isKeyDown("a")) {
@@ -244,118 +261,108 @@ public class Hero extends Mover {
         return getImage().getHeight();
     }
  
-    public void walkRight()
-    {
-        lopen = true;
-        Kijkenrechts = true;
-        frame ++;
-        if(frame==1)
-        {
-            setImage(RMidle);
-        }
-        else if(frame==2)
-        {
-            setImage(RMwalk1);
-        }
-        else if(frame==3)
-        {
-            setImage(RMwalk2);
-        }
-        else if(frame==4)
-        {
-            setImage(RMwalk3);
-        }
-        else if(frame==5)
-        {
-            setImage(RMwalk4);
-        }
-        else if(frame==6)
-        {
-            setImage(RMwalk5);
-        }
-        else if(frame==7)
-        {
-            setImage(RMwalk6);
-        }
-        else if(frame==8)
-        {
-            setImage(RMwalk7);
-        }
-        else if(frame==9)
-        {
-            setImage(RMwalk8);
-        }
-        else if(frame==10)
-        {
-            setImage(RMwalk9);
-        }
-        else if(frame==11)
-        {
-            setImage(RMwalk10);
-        }
-        else if (frame==12){
-            setImage(RMwalk11);
-            frame = 1;
-            return;
-        }
+    public void animateJump(){
+        setImage("p"+waardeCoin+"_jump.png");
     }
+    public void animateDuck(){
+        setImage("p"+waardeCoin+"_duck.png");
+    }
+        
+    public void animateRight()
+    {
+        
     
-    public void walkLeft()
+        if(frame == 1)
+        {
+        setImage("p"+waardeCoin+"_walk01.png");
+        }
+        else if(frame == 2)
+        {
+        setImage("p"+waardeCoin+"_walk02.png");
+        }
+       else if(frame == 3)
+        {
+        setImage("p"+waardeCoin+"_walk03.png");
+        }
+        else if(frame == 4)
+        {
+        setImage("p"+waardeCoin+"_walk04.png");
+        }
+        else if(frame == 5)
+        {
+        setImage("p"+waardeCoin+"_walk05.png");
+        }
+        else if(frame == 6)
+        {
+        setImage("p"+waardeCoin+"_walk06.png");
+        }
+       else if(frame == 7)
+        {
+        setImage("p"+waardeCoin+"_walk07.png");
+        }
+        else if(frame == 8)
+        {
+        setImage("p"+waardeCoin+"_walk08.png");
+        }
+        else if(frame == 9)
+        {
+        setImage("p"+waardeCoin+"_walk09.png");
     {
-        lopen = true;
-        Kijkenrechts = false;
+       
+        frame = 1;
+        return;
+        }
+
+      
+        }
         frame ++;
-        if(frame==1)
-        {
-            setImage(LMidle);
-        }
-        else if(frame==2)
-        {
-            setImage(LMwalk1);
-        }
-        else if(frame==3)
-        {
-            setImage(LMwalk2);
-        }
-        else if(frame==4)
-        {
-            setImage(LMwalk3);
-        }
-        else if(frame==5)
-        {
-            setImage(LMwalk4);
-        }
-       else if(frame==6)
-        {
-            setImage(LMwalk5);
-        }
-        else if(frame==7)
-        {
-            setImage(LMwalk6);
-        }
-        else if(frame==8)
-        {
-            setImage(LMwalk7);
-        }
-        else if(frame==9)
-        {
-            setImage(LMwalk8);
-        }
-        else if(frame==10)
-        {
-            setImage(LMwalk9);
-        }
-        else if(frame==11)
-        {
-            setImage(LMwalk10);
-        }
-        else if (frame==12)
-        {
-            setImage(LMwalk11);
-            frame = 1;
-            return;
-        }
     }
+        
+        public void animateLeft()
+        {
+            if(frame == 1)
+        {
+        setImage("p"+waardeCoin+"_walk01inv.png");
+        }
+        else if(frame == 2)
+        {
+        setImage("p"+waardeCoin+"_walk02inv.png");
+        }
+       else if(frame == 3)
+        {
+        setImage("p"+waardeCoin+"_walk03inv.png");
+        }
+        else if(frame == 4)
+        {
+        setImage("p"+waardeCoin+"_walk04inv.png");
+        }
+        else if(frame == 5)
+        {
+        setImage("p"+waardeCoin+"_walk05inv.png");
+        }
+        else if(frame == 6)
+        {
+        setImage("p"+waardeCoin+"_walk06inv.png");
+        }
+       else if(frame == 7)
+        {
+        setImage("p"+waardeCoin+"_walk07inv.png");
+        }
+        else if(frame == 8)
+        {
+        setImage("p"+waardeCoin+"_walk08inv.png");
+        }
+        else if(frame == 9)
+        {
+        setImage("p"+waardeCoin+"_walk09inv.png");
+    
+        
+     
+        frame = 1;
+        return;
+        }
+        frame ++;
+        }
  
     public void stoplopen()
     {

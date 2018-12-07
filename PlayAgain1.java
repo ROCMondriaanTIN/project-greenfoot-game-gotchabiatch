@@ -16,7 +16,7 @@ public class PlayAgain1 extends Mover
     {
         if (Greenfoot.mouseClicked(this)){ 
         
-        Greenfoot.setWorld (new MyWorld());
+        Greenfoot.setWorld (new LevelSelect());
     }    
     }
 }
