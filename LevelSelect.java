@@ -4,15 +4,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  *
  * @author R. Springer
  */
-public class MyWorld extends World {
+public class LevelSelect extends World {
 
     private CollisionEngine ce;
 
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor for objects of class LevelSelect.
      *
      */
-    public MyWorld() {
+    public LevelSelect() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
         this.setBackground("bg.png");

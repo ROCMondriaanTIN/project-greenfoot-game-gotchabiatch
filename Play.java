@@ -16,7 +16,7 @@ public class Play extends Mover
     {
         if (Greenfoot.mouseClicked(this)){ 
         
-        Greenfoot.setWorld (new MyWorld());
+        Greenfoot.setWorld (new Level1());
     }    
     }    
 }
