@@ -1,18 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Fence here.
+ * Write a description of class JumpTile here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Fence extends Tile
+public class JumpTile extends Tile
 {
     /**
-     * Act - do whatever the Fence wants to do. This method is called whenever
+     * Act - do whatever the JumpTile wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
- public Fence(String image, int width, int heigth) {
+ public JumpTile(String image, int width, int heigth) {
         super(image, width, heigth);
     }
 }

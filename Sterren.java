@@ -15,7 +15,7 @@ public class Sterren extends HUD
     public void act() 
     {
         List <Hero> hero = getWorld().getObjects(Hero.class);
-        getWorld().showText(Integer.toString(hero.get(0).eatSter()) + "X",930,25);
+        getWorld().showText(Integer.toString(hero.get(0).sterren()) + "X",930,25);
     }  
     
     public Sterren()

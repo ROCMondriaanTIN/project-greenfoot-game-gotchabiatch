@@ -43,7 +43,7 @@ public class Hero extends Mover {
     private boolean Kijkenrechts;
     private boolean isKeyPressed;
     
-    public int sterren = 0;
+    static int sterren = 0;
     public int gems = 0;
     public int keys = 0;
     public boolean isDood = false;
@@ -60,13 +60,8 @@ public class Hero extends Mover {
 
     public  boolean key = false;
     public boolean door = false;
-    public  boolean openDeur1 = false;
-    public  boolean touchDeur1 = false;
-    public boolean openDeur2 = false;
-    public boolean openDeur3 = false;
-    public boolean openDeur4 = false;
-    public boolean openDeur5 = false;
-
+    public boolean openDeur1 = false;
+  
     public Hero() {
         super();
         
@@ -115,12 +110,12 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
-        water();
+        
         {
         checkKeys();
-        onGround();
+        //onGround();
         }
-        getWorld().showText(getX() + "," + getY(),500,50);
+        //getWorld().showText(getX() + "," + getY(),500,50);
         velocityX *= drag;
         velocityY += acc;
         if (velocityY > gravity) {
@@ -128,71 +123,111 @@ public class Hero extends Mover {
         }
         applyVelocity();
         
-        eatKeys();
-        eatGems();
-        eatSter(); 
         
-        openDeur1();
-        openDeur2();
-        openDeur3();
-        openDeur4();
-        openDeur5();
-        
-        Enemy();
-        
-        removeItems();
+        sterren();
+        diamanten();
         
         
-        isTouchingMovingPlatform = false;
-        for (Platform platform : getIntersectingObjects(Platform.class)) {
-            if (platform != null) {
-                isTouchingMovingPlatform = true;
-            }
-        }
-        if(isTouchingMovingPlatform == false) {
-            velocityX *= drag;
-            velocityY += acc;
-        }
+        
+        
+        
+        
+        
+        
+        
 
         
 
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
-                //getWorld().removeObject(this);
-               setLocation(400, 1100);
-                break;
-            }
-        }
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
-                getWorld().removeObject(enemy);
-                Greenfoot.setWorld(new GameOver());
-                break;
-            }
-        }
+        
         for (Actor enemy : getIntersectingObjects(Death.class)) {
             if (enemy != null) {
-                getWorld().removeObject(this);
+                
                 Greenfoot.setWorld(new GameOver());
                 break;
             }
         }
-    }
-    
-    public void removeItems()
-    {
-    if (isTouching(HeroCoin1.class)) {
-        waardeCoin = 2;
-        removeTouching(HeroCoin1.class); 
-    }
-    if (isTouching(HeroCoin2.class)) {
-        waardeCoin = 3;
-        removeTouching(HeroCoin2.class); 
-    }
+        for ( Actor heroCoin1 : getIntersectingObjects(HeroCoin1.class)){
+        
+            if (heroCoin1 != null) {
+            waardeCoin = 2;
+            removeTouching(HeroCoin1.class);
+            }
+        }
+        for ( Actor heroCoin2 : getIntersectingObjects(HeroCoin2.class)){
+        
+            if (heroCoin2 != null) {
+            waardeCoin = 3;
+            removeTouching(HeroCoin2.class);
+            }
+        }
+        for ( Actor deur1 : getIntersectingObjects(Door.class)){
+            if (deur1 != null && keys == 1) {
+            openDeur1 = true;
+            setLocation(5757, 4210);
+            }
+        }
+        for ( Actor deur2 : getIntersectingObjects(Door2.class)){
+            if (deur2 != null && keys == 2) {
+            Level = 0;
+            Greenfoot.setWorld(new LevelSelect());
+            }
+        }
+        for ( Actor deur3 : getIntersectingObjects(Door3.class)){
+            if (deur3 != null ) {
+            Level = 1;
+            Greenfoot.setWorld(new Level1());
+            }
+        
+        }
+        for ( Actor deur4 : getIntersectingObjects(Door4.class)){
+            if (deur4 != null && sterren >= 4) {
+            Level = 2;
+            Greenfoot.setWorld(new Level2());
+            }
+        
+        }
+        for ( Actor deur5 : getIntersectingObjects(Door5.class)){
+            if (deur5 != null && sterren >= 6) {
+            Level = 3;
+            Greenfoot.setWorld(new Level3());
+            }
+        
+        }
+        for ( Actor sleutels : getIntersectingObjects(Keys.class)){
+            if(isTouching(Keys.class)){
+             removeTouching(Keys.class);
+             keys = keys +1;
+            }
+            
+        }
+        for ( Actor Gem : getIntersectingObjects(Gems.class)){
+            if(isTouching(Gems.class)){
+             removeTouching(Gems.class);
+             gems = gems +1;
+            }
+            
+        }
+        for ( Actor Sterren : getIntersectingObjects(Ster.class)){
+            if(isTouching(Ster.class)){
+             removeTouching(Ster.class);
+             sterren ++;
+            }
+            
+        }
 }
+    
+    
         
+        public int sterren ()
+        {
+            return sterren;
+        }
         
-        
+        public int diamanten()
+
+       {
+           return gems;
+        }
  
     
             public void checkKeys()
@@ -229,23 +264,24 @@ public class Hero extends Mover {
         return tile != null && tile.isSolid == true; 
     }
     
-    public void water()
-    {
-     if (isTouching(LiquidWaterTop.class))
-     {
-         respawn();
-        }
-    }
+    
     
     
     
     public void handleInput() {
-        if ((Greenfoot.isKeyDown("w") && onGround() == false ) || (Greenfoot.isKeyDown("w") && isTouching(Fence.class)) || (Greenfoot.isKeyDown("w") && onGround() == true) 
-        ||(Greenfoot.isKeyDown("w") && isTouching(Ladder.class)) || (Greenfoot.isKeyDown("w") &&  isTouching(RopeAttached.class)) ||
-        (Greenfoot.isKeyDown("w") && isTouching(RopeVertical.class)) || (Greenfoot.isKeyDown("w") && isTouching(RopeHorizontal.class))) {
-            //Greenfoot.playSound("Jump_-_Sound_Effect-6Q9t8ucAc2M.wav");
+        if (Greenfoot.isKeyDown("w")){
+        onGround();
+        
+        if(onGround() == true)
+        {
             velocityY = -18;
         }
+    }
+        
+        //if ((Greenfoot.isKeyDown("w") && onGround() == false ) || (Greenfoot.isKeyDown("w") && isTouching(JumpTile.class)))  {
+            //Greenfoot.playSound("Jump_-_Sound_Effect-6Q9t8ucAc2M.wav");
+          //  velocityY = -18;
+       // }
         if (Greenfoot.isKeyDown("a")) {
             velocityX = -4;
         } else if (Greenfoot.isKeyDown("d")) {
@@ -374,122 +410,18 @@ public class Hero extends Mover {
         }
         
         
-        public boolean eatKeys()
-        {
-            Actor Keys = getOneIntersectingObject(Keys.class);
-            if(isTouching(Keys.class))
-            {
-            removeTouching(Keys.class);
-            key=true;
-            keys = keys + 1;
-        }
-                
-        return key;
-        }
         
-        public  int eatGems()
-        {
-            Actor Gem = getOneIntersectingObject(Gem.class);
-            if(isTouching(Gem.class))
-            {
-            removeTouching(Gem.class);
-            gems = gems + 1;
-        }
-            return gems;
-        }
         
-    public int eatSter()
-        {
-       Actor Ster = getOneIntersectingObject(Ster.class);
-       if(isTouching(Ster.class))
-            {
-        removeTouching(Ster.class);
-        sterren = sterren + 1;
-        }
-            return sterren;
-        }
         
-         public boolean openDeur1()// eerste teleport deur
-    {
-        if (key==true && isTouching(Door.class))
-        {
-            openDeur1 = true;
-            setLocation(5757, 4210);
-        }
-        return openDeur1;
-}
-    public boolean openDeur2() // deur naar de lobby
-    {
-        if(keys == 2)
-        {
-            if(isTouching(Door2.class))
-            {
-                Greenfoot.setWorld(new LevelSelect());
-                Level = 0;
-            }
-        }
-        return openDeur2;
-    }
-   
-    public boolean openDeur3() // deur naar level 1
-    {
-        if(sterren > 2)
-        {
-            if( isTouching(Door3.class))
-            {
-            Greenfoot.setWorld(new Level1());
-            Level = 1;
-        }
-        }
-        return openDeur3;
-    }
-    public boolean openDeur4() // deur naar level 2
-    {
-        if(sterren > 4)
-        {
-            if( isTouching(Door4.class))
-            {
-                Greenfoot.setWorld(new Level2());
-                Level = 2;
-            }
-        }
-        return openDeur4;
-    }
-    public boolean openDeur5() // deur naar level 3
-    {
-        if(sterren > 6)
-        {
-            if(isTouching(Door5.class))
-            {
-                Greenfoot.setWorld(new Level3());
-                Level = 3;
-            
-            }
-        }
-        return openDeur5;
-    }
+        
+         
 
 public boolean getOpenDeur()
      {
          return openDeur1;
         }
         
-    public void Enemy()
-    {
-     if (isTouching(Fly.class))
-     {
-         respawn();
-     }
-     if ( isTouching(Blocker.class))
-     {
-         respawn();
-         
-        }
-     if(isTouching(Spikes.class))
-     {
-         respawn();
-        }
-    }
+    
     
     public void respawn()
     {

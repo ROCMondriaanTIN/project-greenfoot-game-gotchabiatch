@@ -15,7 +15,7 @@ public class Gems extends HUD
     public void act() 
     {
         List <Hero> hero = getWorld().getObjects(Hero.class);
-        getWorld().showText(Integer.toString(hero.get(0).eatGems()) + "X",930,55);
+        getWorld().showText(Integer.toString(hero.get(0).diamanten()) + "X",930,55);
     }  
     
     public Gems()

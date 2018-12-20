@@ -88,7 +88,7 @@ public class Level2 extends World {
         addObject(hero, 47,2170);
        // addObject(new Enemy(), 1170, 410);
         //addObject(new Platform(), 361, 5570);
-        addObject(new HUD(), 0, 0);
+       // addObject(new HUD(), 0, 0);
         addObject(new HeroCoin1(),800 ,130);
         // Force act zodat de camera op de juist plek staat.
         camera.act();
