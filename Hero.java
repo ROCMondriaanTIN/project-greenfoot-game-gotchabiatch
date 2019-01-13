@@ -167,7 +167,7 @@ public class Hero extends Mover {
             }
         }
         for ( Actor deur2 : getIntersectingObjects(Door2.class)){
-            if (deur2 != null && keys == 2) {
+            if (deur2 != null && keys == 1) {
             Level = 0;
             Greenfoot.setWorld(new LevelSelect());
             }
@@ -180,14 +180,14 @@ public class Hero extends Mover {
         
         }
         for ( Actor deur4 : getIntersectingObjects(Door4.class)){
-            if (deur4 != null && sterren >= 4) {
+            if (deur4 != null && sterren >= 2) {
             Level = 2;
             Greenfoot.setWorld(new Level2());
             }
         
         }
         for ( Actor deur5 : getIntersectingObjects(Door5.class)){
-            if (deur5 != null && sterren >= 6) {
+            if (deur5 != null && sterren >= 4) {
             Level = 3;
             Greenfoot.setWorld(new Level3());
             }
@@ -200,9 +200,9 @@ public class Hero extends Mover {
             }
             
         }
-        for ( Actor Gem : getIntersectingObjects(Gems.class)){
-            if(isTouching(Gems.class)){
-             removeTouching(Gems.class);
+        for ( Actor Gem : getIntersectingObjects(Gem.class)){
+            if(isTouching(Gem.class)){
+             removeTouching(Gem.class);
              gems = gems +1;
             }
             
@@ -269,14 +269,12 @@ public class Hero extends Mover {
     
     
     public void handleInput() {
-        if (Greenfoot.isKeyDown("w")){
-        onGround();
         
-        if(onGround() == true)
+        if(Greenfoot.isKeyDown("w") && onGround() == false || Greenfoot.isKeyDown("w") && isTouching(JumpTile.class))
         {
             velocityY = -18;
         }
-    }
+    
         
         //if ((Greenfoot.isKeyDown("w") && onGround() == false ) || (Greenfoot.isKeyDown("w") && isTouching(JumpTile.class)))  {
             //Greenfoot.playSound("Jump_-_Sound_Effect-6Q9t8ucAc2M.wav");
@@ -404,9 +402,9 @@ public class Hero extends Mover {
     {
         lopen = false;
         if (Kijkenrechts)
-            setImage (RMidle);
+            lopen = false;
         else
-            setImage (LMidle);
+            lopen = false;
         }
         
         
