@@ -63,7 +63,7 @@ public class LevelSelect extends World {
         addObject(hero, 166,1390);
        // addObject(new Enemy(), 1170, 410);
         //addObject(new Platform(), 361, 5570);
-     //   addObject(new HUD(), 0, 0);
+        addObject(new HUD(), 0, 0);
         
         // Force act zodat de camera op de juist plek staat.
         camera.act();

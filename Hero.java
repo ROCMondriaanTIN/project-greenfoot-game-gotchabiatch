@@ -61,6 +61,9 @@ public class Hero extends Mover {
     public  boolean key = false;
     public boolean door = false;
     public boolean openDeur1 = false;
+    private int springY;
+    private int walkL = -10;
+    private int walkR = 10;
   
     public Hero() {
         super();
@@ -269,21 +272,35 @@ public class Hero extends Mover {
     
     
     public void handleInput() {
-        
-        if(Greenfoot.isKeyDown("w") && onGround() == false || Greenfoot.isKeyDown("w") && isTouching(JumpTile.class))
+        if(waardeCoin == 1)
         {
-            velocityY = -18;
+            springY = -20;
+            walkL = -5;
+            walkR = 5;
         }
+        else if(waardeCoin == 2)
+        {
+            springY = -22;
+            walkL = -5;
+            walkR = 5;
+        }
+        else if(waardeCoin == 3)
+        {
+            springY= -22;
+            walkL = -5;
+            walkR = 5;
+        }
+        
     
         
-        //if ((Greenfoot.isKeyDown("w") && onGround() == false ) || (Greenfoot.isKeyDown("w") && isTouching(JumpTile.class)))  {
-            //Greenfoot.playSound("Jump_-_Sound_Effect-6Q9t8ucAc2M.wav");
-          //  velocityY = -18;
-       // }
+        if ((Greenfoot.isKeyDown("w") && onGround() == true ) || (Greenfoot.isKeyDown("w") && isTouching(JumpTile.class)))  {
+            Greenfoot.playSound("Jump_-_Sound_Effect-6Q9t8ucAc2M.wav");
+            velocityY = springY;
+        }
         if (Greenfoot.isKeyDown("a")) {
-            velocityX = -4;
+            velocityX = walkL;
         } else if (Greenfoot.isKeyDown("d")) {
-            velocityX = 4;
+            velocityX = walkR;
         }
     }
 

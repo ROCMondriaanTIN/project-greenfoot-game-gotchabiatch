@@ -15,7 +15,7 @@ public class HUD extends Actor
      */
     public void act() 
     {
-        if (onetime = true ){
+        if (onetime == true ){
         onetime = false;
         getWorld().addObject(new Sterren(),960,20);
         getWorld().addObject(new Gems(), 960, 55);
